@@ -62,7 +62,7 @@ if (issue !== null) {
 const out = arg('output', process.env.MAKEFUN_OUTPUT_DIR ?? '/output');
 mkdirSync(out, { recursive: true });
 mkdirSync(join(out, 'dashboard'), { recursive: true });
-writeFileSync(join(out, 'board.json'), `${JSON.stringify({ as_of: snapshot.as_of, generated: new Date().toISOString(), rows: board }, null, 2)}\n`);
+writeFileSync(join(out, 'board.json'), `${JSON.stringify({ as_of: snapshot.as_of, generated: snapshot.as_of, rows: board }, null, 2)}\n`);
 writeFileSync(join(out, 'dashboard', 'board-data.js'), `// Written by main.ts from the board below: the page's only input.\nwindow.BOARD = ${JSON.stringify({ as_of: snapshot.as_of, source: snapshot.source, rows: board })};\n`);
 
 /** Copy one directory's regular files into `to`, skipping names that start with a dot. */
